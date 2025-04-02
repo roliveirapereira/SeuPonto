@@ -31,3 +31,12 @@ p{
     color: #161616;
     font-weight: 500;
 }
+.container{
+    display: flex;
+    width: 100%;
+    max-width: 110rem;
+    margin: 0 auto;
+}
+.logo{
+    width: 21rem;
+}
