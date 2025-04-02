@@ -14,11 +14,26 @@
             <div class="container">
                 <img src="{% static 'images/logo.svg' %}" alt="Logo SeuPonto" class="logo">
                 <div class="perfil">
-                    <p>Rodrigo</p>
+                    <p>{{ user.first_name }}</p>
                     <img src="{% static 'images/user.svg' %}" alt="Perfil">
                 </div>
             </div>
         </div>
     </header>
+    <main>
+        <form method="post" action="/registrar_ponto/">
+            {% csrf_token %}
+            <div id="meu-ponto">
+                <h2>Meu Ponto</h2>
+                <p id="timer">00:00:00</p>
+                <button type="button" id="start-btn">Iniciar ponto</button>
+                <button type="button" id="pause-btn">Pausar</button>
+                <button type="button" id="resume-btn">Continuar</button>
+                <button type="button" id="stop-btn">Finalizar</button>
+                <button type="button" id="cancel-btn">Cancelar</button>
+            </div>
+        </form>        
+    </main>
+    <script src="{% static 'js/registrar_ponto.js' %}"></script>
 </body>
 </html>
