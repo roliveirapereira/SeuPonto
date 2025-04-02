@@ -1,11 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body>
-    
+    <main>
+        <div class="login-container">
+            <h1>
+                <img src="{% static 'images/logo.svg' %}" alt="Logo SeuPonto" class="logo">
+            </h1>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <label for="username">Username</label>
+                <div class="input">
+                    <img src="{% static 'images/user.svg' %}" alt="Username">
+                    <input type="text" id="username" name="username" placeholder="Nome de usuário..." required>
+                </div>
+                <label for="password">Password</label>
+                <div class="input">
+                    <img src="{% static 'images/password.svg' %}" alt="Password">
+                    <input type="password" id="password" name="password" placeholder="Senha do usuário..." required>
+                </div>
+                <button type="submit" class="login">Login</button>
+                <p>Esqueceu a senha? <a href="reset_password">Recuperar</a></p>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

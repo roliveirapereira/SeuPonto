@@ -129,3 +129,9 @@ CSRF_TRUSTED_ORIGINS = [
     f"https://{os.getenv('ookish-space-waddle-r965w9jxgr5hgr7')}-8000.githubpreview.dev",
     "https://localhost:8000"
 ]
+
+STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Pasta 'static' no diretório raiz
+]
