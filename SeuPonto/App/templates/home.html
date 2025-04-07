@@ -12,7 +12,7 @@
     <header>
         <div class="header-container">
             <div class="container">
-                <img src="{% static 'images/logo.svg' %}" alt="Logo SeuPonto" class="logo">
+                <h1><img src="{% static 'images/logo.svg' %}" alt="Logo SeuPonto" class="logo"></h1>
                 <div class="perfil">
                     <p>{{ user.first_name }}</p>
                     <img src="{% static 'images/user.svg' %}" alt="Perfil">
@@ -21,19 +21,40 @@
         </div>
     </header>
     <main>
-        <form method="post" action="/registrar_ponto/">
-            {% csrf_token %}
-            <div id="meu-ponto">
-                <h2>Meu Ponto</h2>
-                <p id="timer">00:00:00</p>
-                <button type="button" id="start-btn">Iniciar ponto</button>
-                <button type="button" id="pause-btn">Pausar</button>
-                <button type="button" id="resume-btn">Continuar</button>
-                <button type="button" id="stop-btn">Finalizar</button>
-                <button type="button" id="cancel-btn">Cancelar</button>
+        <div class="container">
+            <form method="post" action="/registrar_ponto/">
+                {% csrf_token %}
+                <div id="meu-ponto" class="meu-ponto">
+                    <h2>Meu Ponto</h2>
+                    <span id="tempo-decorrido" class="tempo-decorrido" data-entrada="{{ ponto.entrada|date:'U' }}">00:00:00</span>
+                    <div class="botoes">
+                        <button type="button" id="start-btn" class="start-btn">Iniciar ponto</button>
+                        <button type="button" style="display: none;" id="cancel-btn" class="cancel-btn">Cancelar</button>
+                        <button type="button" style="display: none;" id="end-btn" class="end-btn">Finalizar</button>
+                    </div>
+                </div>
+            </form>
+            <div id="modal-resumo" class="modal-resumo">
+                <div class="modal-container">
+                    <h3>Resumo do Ponto</h3>
+                    <p>Entrada: <span id="resumo-entrada"></span></p>
+                    <p>Saída: <span id="resumo-saida"></span></p>
+                    <p>Carga Horária: <span id="resumo-carga"></span></p>
+                    <label>Descrição:</label>
+                    <input type="text" id="descricao-input" maxlength="100" style="width: 100%;" required />
+                    <label>Anotação Técnica:</label>
+                    <input type="text" id="anotacao-input" maxlength="100" style="width: 100%;" />
+                    <div style="margin-top:15px; text-align: right;">
+                        <button type="button" id="fechar-modal">Fechar</button>
+                        <button type="button" id="confirmar-finalizar">Finalizar</button>
+                    </div>
+                </div>
             </div>
-        </form>        
+        </div>>
     </main>
-    <script src="{% static 'js/registrar_ponto.js' %}"></script>
+    <script src="{% static 'js/ponto.js' %}"></script>
+        
+        
+        
 </body>
 </html>

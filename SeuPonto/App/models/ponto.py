@@ -1,12 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
-from datetime import timedelta
 from django.utils.timezone import now
 
 class Ponto(models.Model):
     STATUS_CHOICES = [
         ('ativo', 'Ativo'),
-        ('pausado', 'Pausado'),
         ('finalizado', 'Finalizado'),
     ]
 
@@ -16,8 +14,7 @@ class Ponto(models.Model):
     carga_horaria = models.DurationField(null=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='ativo')
     descricao = models.TextField(max_length=100)
-    tempo_pausado = models.DurationField(default=timedelta(0))
-    ultimo_pausa = models.DateTimeField(null=True, blank=True)
+    anotacao_tecnica = models.CharField(max_length=100)
     
     def __str__(self):
         return f'{self.user.username} - {self.entrada} - {self.saida or "Em andamento"}'

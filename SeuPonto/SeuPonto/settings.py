@@ -135,3 +135,6 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Pasta 'static' no diretório raiz
 ]
+LOGIN_URL = '/login/'
+TIME_ZONE = 'America/Sao_Paulo'
+USE_TZ = True
